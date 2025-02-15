@@ -1,80 +1,10 @@
+<!-- filepath: templates/admin/user_information.html -->
 {% extends "admin/base_site.html" %}
-{% load static %}
-
 {% block content %}
-<h1>User Information: {{ user.username }}</h1>
+<h1>User Information</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="button">Save</button>
+    <button type="submit">Save</button>
 </form>
-
-<h2>Basic Information</h2>
-<p>Father's Name: {{ user_basic.father_first_name }} {{ user_basic.father_last_name }}</p>
-<p>Mother's Name: {{ user_basic.mother_first_name }} {{ user_basic.mother_last_name }}</p>
-<p>Gender: {{ user_basic.gender }}</p>
-<p>Nationality: {{ user_basic.nationality }}</p>
-<p>Date of Joining: {{ user_basic.date_of_joining }}</p>
-<p>Date of Leaving: {{ user_basic.date_of_leaving }}</p>
-<p>Increment Date: {{ user_basic.increment_date }}</p>
-<p>Maternity Benefit Date: {{ user_basic.maternity_benefit_date }}</p>
-<p>Reason of Leaving: {{ user_basic.reason_of_leaving }}</p>
-<p>Handicap Status: {{ user_basic.handicap_status }}</p>
-<p>Employment Status: {{ user_basic.employment_status }}</p>
-<p>Designation: {{ user_basic.designation }}</p>
-<p>Department: {{ user_basic.department }}</p>
-<p>Subdepartment: {{ user_basic.subdepartment }}</p>
-<p>Staff/Worker: {{ user_basic.staff_worker }}</p>
-<p>Mobile Number: {{ user_basic.mobile_number }}</p>
-
-<h2>Bank Information</h2>
-{% for bank_info in user_bank_info %}
-    <p>Bank Name: {{ bank_info.bank }}</p>
-    <p>Account Number: {{ bank_info.account_number }}</p>
-    <p>Branch: {{ bank_info.branch }}</p>
-    <p>IFSC: {{ bank_info.ifsc }}</p>
-    <p>PAN Card: {{ bank_info.pan_card }}</p>
-    <p>UAN Number: {{ bank_info.uan_number }}</p>
-    <p>ESIC: {{ bank_info.esic }}</p>
-{% endfor %}
-
-<h2>Address</h2>
-<p>Current Address: {{ user_address.current_address }}</p>
-<p>Permanent Address: {{ user_address.permanent_address }}</p>
-
-<h2>Personal Data</h2>
-<p>Photo: <img src="{{ user_personal_data.photo.url }}" width="50" height="50" /></p>
-<p>Signature: <img src="{{ user_personal_data.signature.url }}" width="50" height="50" /></p>
-<p>Anniversary Date: {{ user_personal_data.anniversary_date }}</p>
-<p>Hobbies: {{ user_personal_data.hobbies }}</p>
-<p>Skills: {{ user_personal_data.skills }}</p>
-<p>Proof of Identification: {{ user_personal_data.proof_of_identification }}</p>
-
-<h2>Employment</h2>
-{% for employment in user_employment %}
-    <p>Company Name: {{ employment.company_name }}</p>
-    <p>Start Date: {{ employment.start_date }}</p>
-    <p>End Date: {{ employment.end_date_display }}</p>
-    <p>Created: {{ employment.created }}</p>
-    <p>Updated: {{ employment.updated }}</p>
-{% endfor %}
-
-<h2>Family Details</h2>
-{% for family_detail in user_family_details %}
-    <p>Relation: {{ family_detail.relation }}</p>
-    <p>Name: {{ family_detail.name }}</p>
-    <p>Date of Birth: {{ family_detail.date_of_birth }}</p>
-    <p>Aadhar Number: {{ family_detail.aadhar_number }}</p>
-    <p>Created: {{ family_detail.created }}</p>
-    <p>Updated: {{ family_detail.updated }}</p>
-{% endfor %}
-
-<h2>Documents</h2>
-{% for document in user_documents %}
-    <p>Document Type: {{ document.document_type }}</p>
-    <p>Document Number: {{ document.document_number }}</p>
-    <p>Document Image: <img src="{{ document.document_image.url }}" width="50" height="50" /></p>
-    <p>Created: {{ document.created }}</p>
-    <p>Updated: {{ document.updated }}</p>
-{% endfor %}
 {% endblock %}

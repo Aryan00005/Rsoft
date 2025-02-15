@@ -21,9 +21,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('admin/user-information/', include('user.admin_urls')),  # Include the custom admin URLs
+    path('admin/user/user-information/', include('user.admin_urls')),  # Include the custom admin URLs first
+    path('admin/', admin.site.urls),  # Default admin URLs
 ]
 
 if settings.DEBUG:
