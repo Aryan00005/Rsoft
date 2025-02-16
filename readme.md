@@ -1,6 +1,6 @@
-# Rsoft
+# rla_play
 
-Rsoft is a Django project built with Python 3.12.
+rla_play is a Django project built with Python 3.12.
 
 ## Setup Guide
 
