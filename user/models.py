@@ -99,6 +99,6 @@ class UserDocument(models.Model):
     created = models.DateTimeField(auto_now_add=True, verbose_name="Created")
     updated = models.DateTimeField(auto_now=True, verbose_name="Updated")
 
-    def __str__(self):
+    def __str__(self):    
         return f"{self.user.username} - {self.document_type} - {self.document_number}"
     
