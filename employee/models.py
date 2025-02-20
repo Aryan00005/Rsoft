@@ -5,17 +5,17 @@ from department.models import Department, SubDepartment
 from .constants import YES_NO_CHOICES, STAFF_WORKER_CHOICES
 from .helpers import user_directory_path
 
-class UserBasic(models.Model):
+class EmployeeBasic(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="User")
-    father_first_name = models.CharField(max_length=30, verbose_name="Father's First Name")
-    father_last_name = models.CharField(max_length=30, verbose_name="Father's Last Name")
-    mother_first_name = models.CharField(max_length=30, verbose_name="Mother's First Name")
-    mother_last_name = models.CharField(max_length=30, verbose_name="Mother's Last Name")
+    name_as_per_aadhar_card = models.CharField(max_length=30, verbose_name="Name as per Aadhar")
+    first_name = models.CharField(max_length=30, verbose_name="First Name")
+    middle_name = models.CharField(max_length=30, verbose_name="Middle Name")
+    last_name = models.CharField(max_length=30, verbose_name="Last Name")
     gender = models.ForeignKey(Gender, on_delete=models.SET_NULL, null=True, verbose_name="Gender")
     nationality = models.ForeignKey(Nationality, on_delete=models.SET_NULL, null=True, verbose_name="Nationality")
     date_of_joining = models.DateField(verbose_name="Date of Joining")
     date_of_leaving = models.DateField(null=True, blank=True, verbose_name="Date of Leaving")
-    increment_date = models.DateField(null=True, blank=True, verbose_name="Increment Date")
+    last_increment_date = models.DateField(null=True, blank=True, verbose_name="Last Increment Date")
     maternity_benefit_date = models.DateField(null=True, blank=True, verbose_name="Maternity Benefit Date")
     reason_of_leaving = models.TextField(null=True, blank=True, verbose_name="Reason of Leaving")
     handicap_status = models.IntegerField(choices=YES_NO_CHOICES, default=0, verbose_name="Handicap Status")
@@ -29,7 +29,7 @@ class UserBasic(models.Model):
     def __str__(self):
         return self.user.username
 
-class UserBankInformation(models.Model):
+class EmployeeBankInformation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User")
     bank = models.ForeignKey(Bank, on_delete=models.SET_NULL, null=True, verbose_name="Bank Name")
     account_number = models.CharField(max_length=30, verbose_name="Account Number")
@@ -42,7 +42,7 @@ class UserBankInformation(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.bank.name}"
     
-class UserAddress(models.Model):
+class EmployeeAddress(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="User")
     current_address = models.TextField(verbose_name="Current Address")
     permanent_address = models.TextField(verbose_name="Permanent Address")
@@ -52,7 +52,7 @@ class UserAddress(models.Model):
     def __str__(self):
         return f"{self.user.username} - Address"
     
-class UserPersonalData(models.Model):
+class EmployeePersonalData(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="User")
     photo = models.ImageField(upload_to=user_directory_path, max_length=1048576, verbose_name="Photo")
     signature = models.ImageField(upload_to=user_directory_path, max_length=1048576, verbose_name="Signature")
@@ -64,7 +64,7 @@ class UserPersonalData(models.Model):
     def __str__(self):
         return f"{self.user.username} - Personal Data"
     
-class UserEmployment(models.Model):
+class EmployeeEmployment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User")
     company_name = models.CharField(max_length=255, verbose_name="Company Name")
     start_date = models.DateField(verbose_name="Start Date")
@@ -79,7 +79,7 @@ class UserEmployment(models.Model):
         return self.end_date if self.end_date else "Present"
     end_date_display.short_description = 'End Date'
     
-class UserFamilyDetail(models.Model):
+class EmployeeFamilyDetail(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User")
     relation = models.ForeignKey(FamilyRelations, on_delete=models.CASCADE, verbose_name="Relation")
     name = models.CharField(max_length=255, verbose_name="Name")
@@ -91,7 +91,7 @@ class UserFamilyDetail(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.relation} - {self.name}"
     
-class UserDocument(models.Model):
+class EmployeeDocument(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User")
     document_type = models.ForeignKey(ProofOfIdentification, on_delete=models.CASCADE, verbose_name="Document Type")
     document_number = models.CharField(max_length=255, verbose_name="Document Number")

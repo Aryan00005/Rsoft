@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     # Main app
     'rla_play',  
     # Other apps
-    'user',
+    'employee',
     'department',
     'utility',
     'establishment',
+    'establishment_employee',
 ]
 
 MIDDLEWARE = [

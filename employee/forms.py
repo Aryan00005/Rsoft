@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import UserBasic, UserBankInformation, UserAddress, UserPersonalData, UserEmployment, UserFamilyDetail, UserDocument
+from .models import EmployeeBasic, EmployeeBankInformation, EmployeeAddress, EmployeePersonalData, EmployeeEmployment, EmployeeFamilyDetail, EmployeeDocument
 
 class UserInformationForm(forms.ModelForm):
     class Meta:
