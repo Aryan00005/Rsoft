@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import EstablishmentBasic
+from .models import Establishment
 
-@admin.register(EstablishmentBasic)
+@admin.register(Establishment)
 
 class EstablishmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'state','type')

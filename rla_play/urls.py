@@ -25,7 +25,7 @@ from home.views import homepage_view
 
 urlpatterns = [
     path('', homepage_view, name='homepage'),  # Add this line
-    path('admin/user/user-information/', include('employee.admin_urls')),  # Include the custom admin URLs first
+    path('admin/user/user-information/', include('user.admin_urls')),  # Include the custom admin URLs first
     path('admin/', admin.site.urls),  # Default admin URLs
 ]
 
