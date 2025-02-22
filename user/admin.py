@@ -4,7 +4,7 @@ from .models import UserBasic, UserBankInformation, UserAddress, UserPersonalDat
 
 @admin.register(UserBasic)
 class UserBasicAdmin(admin.ModelAdmin):
-    list_display = ('user', 'father_first_name', 'father_last_name', 'mother_first_name', 'mother_last_name', 'gender', 'nationality', 'date_of_joining', 'date_of_leaving', 'increment_date', 'maternity_benefit_date', 'reason_of_leaving', 'handicap_status', 'employment_status', 'designation', 'department', 'subdepartment', 'staff_worker', 'mobile_number')
+    list_display = ('user', 'father_first_name', 'father_last_name', 'mother_first_name', 'mother_last_name', 'gender', 'nationality', 'date_of_joining', 'date_of_leaving', 'last_increment_date', 'maternity_benefit_date', 'reason_of_leaving', 'handicap_status', 'employment_status', 'designation', 'department', 'subdepartment', 'staff_worker', 'mobile_number')
 
 @admin.register(UserBankInformation)
 class UserBankInformationAdmin(admin.ModelAdmin):

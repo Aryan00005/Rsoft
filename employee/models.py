@@ -18,7 +18,7 @@ class EmployeeBasic(models.Model):
     gender = models.ForeignKey(Gender, on_delete=models.SET_NULL, null=True, verbose_name="Gender")
     nationality = models.ForeignKey(Nationality, on_delete=models.SET_NULL, null=True, verbose_name="Nationality")
     date_of_joining = models.DateField(verbose_name="Date of Joining")
-    increment_date = models.DateField(null=True, blank=True, verbose_name="Increment Date")
+    last_increment_date = models.DateField(null=True, blank=True, verbose_name="Last Increment Date")
     maternity_benefit_date = models.DateField(null=True, blank=True, verbose_name="Maternity Benefit Date")
     handicap_status = models.IntegerField(choices=YES_NO_CHOICES, default=0, verbose_name="Handicap Status")
     employment_status = models.ForeignKey(EmploymentType, on_delete=models.SET_NULL, null=True, verbose_name="Employment Status")

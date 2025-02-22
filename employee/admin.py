@@ -4,7 +4,7 @@ from .models import EmployeeBasic, EmployeeBankInformation, EmployeeAddress, Emp
 
 @admin.register(EmployeeBasic)
 class EmployeeBasicAdmin(admin.ModelAdmin):
-    list_display = ('name_as_per_aadhar', 'employee_first_name', 'employee_middle_name', 'employee_last_name', 'father_name', 'gender', 'nationality', 'date_of_joining', 'increment_date', 'maternity_benefit_date', 'handicap_status', 'employment_status', 'designation', 'department', 'subdepartment', 'staff_worker', 'mobile_number')
+    list_display = ('name_as_per_aadhar', 'employee_first_name', 'employee_middle_name', 'employee_last_name', 'father_name', 'gender', 'nationality', 'date_of_joining', 'last_increment_date', 'maternity_benefit_date', 'handicap_status', 'employment_status', 'designation', 'department', 'subdepartment', 'staff_worker', 'mobile_number')
 
 @admin.register(EmployeeBankInformation)
 class EmployeeBankInformationAdmin(admin.ModelAdmin):
