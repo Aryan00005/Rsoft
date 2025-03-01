@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'employee',
     'establishment_employee',
     'act',
+    'Payroll_Master',
 ]
 
 MIDDLEWARE = [
