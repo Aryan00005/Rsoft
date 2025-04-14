@@ -31,7 +31,7 @@ class EmployeeBasic(models.Model):
 
 
 class EmployeeBankInformation(models.Model):
-    employee = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Employee")
+    employee = models.ForeignKey(EmployeeBasic, on_delete=models.CASCADE, verbose_name="Employee")
     bank = models.ForeignKey(Bank, on_delete=models.SET_NULL, null=True, verbose_name="Bank Name")
     account_number = models.CharField(max_length=30, verbose_name="Account Number")
     branch = models.CharField(max_length=50, verbose_name="Branch")
@@ -45,7 +45,7 @@ class EmployeeBankInformation(models.Model):
 
     
 class EmployeeAddress(models.Model):
-    employee = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Employee")
+    employee = models.OneToOneField(EmployeeBasic, on_delete=models.CASCADE, verbose_name="Employee")
     current_address = models.TextField(verbose_name="Current Address")
     permanent_address = models.TextField(verbose_name="Permanent Address")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Created")
@@ -56,7 +56,7 @@ class EmployeeAddress(models.Model):
 
     
 class EmployeePersonalData(models.Model):
-    employee = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Employee")
+    employee = models.OneToOneField(EmployeeBasic, on_delete=models.CASCADE, verbose_name="Employee")
     photo = models.ImageField(upload_to=user_directory_path, max_length=1048576, verbose_name="Photo")
     signature = models.ImageField(upload_to=user_directory_path, max_length=1048576, verbose_name="Signature")
     anniversary_date = models.DateField(null=True, blank=True, verbose_name="Anniversary Date")
@@ -69,7 +69,7 @@ class EmployeePersonalData(models.Model):
 
     
 class EmployeeEmployment(models.Model):
-    employee = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Employee")
+    employee = models.ForeignKey(EmployeeBasic, on_delete=models.CASCADE, verbose_name="Employee")
     company_name = models.CharField(max_length=255, verbose_name="Company Name")
     start_date = models.DateField(verbose_name="Start Date")
     end_date = models.DateField(null=True, blank=True, verbose_name="End Date")
@@ -85,7 +85,7 @@ class EmployeeEmployment(models.Model):
     end_date_display.short_description = 'End Date'
     
 class EmployeeFamilyDetail(models.Model):
-    employee = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Employee")
+    employee = models.ForeignKey(EmployeeBasic, on_delete=models.CASCADE, verbose_name="Employee")
     relation = models.ForeignKey(FamilyRelations, on_delete=models.CASCADE, verbose_name="Relation")
     name = models.CharField(max_length=255, verbose_name="Name")
     date_of_birth = models.DateField(verbose_name="Date of Birth")
@@ -98,7 +98,7 @@ class EmployeeFamilyDetail(models.Model):
 
     
 class EmployeeDocument(models.Model):
-    employee = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Employee")
+    employee = models.ForeignKey(EmployeeBasic, on_delete=models.CASCADE, verbose_name="Employee")
     document_type = models.ForeignKey(ProofOfIdentification, on_delete=models.CASCADE, verbose_name="Document Type")
     document_number = models.CharField(max_length=255, verbose_name="Document Number")
     document_image = models.ImageField(upload_to=user_directory_path, max_length=1048576, verbose_name="Document Image")

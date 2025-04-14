@@ -31,7 +31,7 @@ class EmployeePersonalDataAdmin(admin.ModelAdmin):
 
 @admin.register(EmployeeEmployment)
 class EmployeeEmploymentAdmin(admin.ModelAdmin):
-    list_display = ('employee', 'company_name', 'start_date', 'end_date_display', 'created', 'updated')
+    list_display = ('employee', 'company_name', 'start_date', 'end_date_display', 'created', 'updated')  
 
 @admin.register(EmployeeFamilyDetail)
 class EmployeeFamilyDetailAdmin(admin.ModelAdmin):
